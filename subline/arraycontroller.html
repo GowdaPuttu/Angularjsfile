@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="angular.min.js">
+</script>
+<script>
+var app=angular.module("myApp",[]);
+app.controller("myctrl",function($scope){
+		$scope.marks=[10,20,30,40,50];
+
+});
+</script>
+
+</head>
+<body ng-App="myApp" ng-controller="myctrl" ng-init="name='ram'">
+<div ng-repeat="mark in marks|orderBy:mark:true">
+		{{mark}}
+		</div>
+
+</body>
+</html>

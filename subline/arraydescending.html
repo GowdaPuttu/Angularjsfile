@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+ Factorial of number</title>
+ <script src="angular.min.js"></script>
+ <script>
+  var app=angular.module('customFilterapp',[]);
+   app.controller('customfilter',function($scope)
+  {
+ $scope.array=[10,56,23,48,71,12];
+	});
+ 
+  	app.filter('descending',function()
+	  {
+
+	  	return function(item,condn)
+	  	{
+	  			if(condn==true)
+	  		{
+	  		 	for (var i = 0; i < item.length; i++) 
+        		{
+           		 for ( var j = i + 1; j <item.length; j++) 
+           		 {
+               	 if (item[i] < item[j]) 
+                	{
+                  var   a = item[i];
+                    item[i] = item[j];
+                    item[j] = a;
+               		 }
+           	 			}
+        			}
+        	}
+        	else if(condn==false)
+        		{
+
+      			 for (var i = 0; i < item.length; i++) 
+        		{
+           	 for ( var j = i + 1; j <item.length; j++) 
+           	 {
+                if (item[i] > item[j]) 
+                	{
+                  var   a = item[i];
+                    item[i] = item[j];
+                    item[j] = a;
+               		 }
+           	 	}
+        	}
+       	 }
+
+       	 else{
+       	 	item.sort().reverse();
+       	 }
+
+        return item;
+		}
+
+  } );
+	  </script>
+	  <body ng-App="customFilterapp"  ng-controller="customfilter">
+
+	  <div ng-repeat="func in array|descending">
+	  {{func}}</div>
+	  </body>
+	  </html>
+
+
+

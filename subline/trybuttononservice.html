@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="angular.min.js"></script>
+<script>
+var app=angular.module('angularCustomApp',[]);
+app.controller('customctrl',function($scope,calcservice)
+{
+
+
+		$scope.factorial=function()
+			{
+				$scope.ans=calcservice.fac($scope.number);
+			return ans;
+			}
+
+
+			$scope.Temperature=function()
+			{
+				$scope.ans=calcservice.temp($scope.number);
+				return ans;
+
+		});
+
+		app.service('calcservice',function(){
+			
+		this.fac=function(a)
+		{
+			var act=1;	
+			
+			for (var c = 1; c <= a; c++)
+			{
+   				 act = act * c;
+ 
+
+			}
+			return act;
+		}
+
+
+		this.temp=function(b)
+		{
+			var t=((b*9/5) + 32);
+
+		return  t;
+		}
+		});
+
+		</script>
+		</head>
+		<body ng-app="angularCustomApp" ng-controller="customctrl">
+		Enter a number for factorial:<input type="number" ng-model="number"/>
+		result:<input type="number" ng-model="ans"/>
+		<input type="button" value="factorial" ng-click="factorial()"/>
+		<input type="button" value="Temperature" ng-click="Temperature()"/>
+		</body>
+		</html>

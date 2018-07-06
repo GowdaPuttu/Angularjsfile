@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="angular.min.js"></script>
+<script>
+var app=angular.module('angularCustomApp',[]);
+app.controller('customctrl',function($scope,calcservice)
+{
+
+
+		$scope.sqrt=function()
+		{
+			return calcservice.sqroot($scope.value);
+			}
+
+
+			$scope.power=function()
+			{
+				return calcservice.pwr($scope.value,$scope.value)
+			}
+
+		});
+
+		app.service('calcservice',function(){
+		this.sqroot=function(a)
+		{
+		return Math.sqrt(a);
+		}
+		this.pwr=function(a,b)
+		{
+		return Math.pow(a,b);
+		}
+
+
+
+
+	})
+		</script>
+		</head>
+		<body ng-app="angularCustomApp" ng-controller="customctrl">
+		Enter a number:<input type="number" ng-model="value"/>
+		<p>
+		square root:{{sqrt()}}</p>
+</br>
+		<p>
+		The power is:{{power()}}</p>
+		</body>
+		</html>

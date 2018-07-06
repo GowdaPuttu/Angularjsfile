@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>
+
+AngularJs ng-pattern Email Validation Example
+
+</title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+<script type="text/javascript">
+
+var app = angular.module('ngpatternApp', []);
+
+app.controller('ngpatternCtrl', function ($scope) {
+
+$scope.sendForm = function () {
+
+$scope.msg = "Form Validated";
+
+};
+
+});
+
+</script>
+
+</head>
+
+<body>
+
+<div ng-app="ngpatternApp" ng-controller="ngpatternCtrl">
+
+<h3>AngularJs ng-pattern Email Validation Example</h3>
+
+<form name="personForm" novalidate ng-submit="personForm.$valid &&sendForm()">
+
+Email:<input type="text" name="email" ng-model="txtmail" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required />
+
+<span style="color:Red" ng-show="personForm.email.$error.required"> Required! </span>
+
+<span style="color:Red" ng-show="personForm.email.$dirty&&personForm.email.$error.pattern">Please Enter Valid Email</span>
+
+<br /><br />
+
+<button type="submit">Submit Form</button><br /><br />
+
+<span>{{msg}}</span>
+
+</form>
+
+</div>
+
+</body>
+
+</html>

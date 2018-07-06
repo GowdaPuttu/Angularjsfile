@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+ Factorial of number</title>
+ <script src="angular.min.js"></script>
+ <script>
+  var app=angular.module('customFilterapp',[]);
+	app.filter('ordinal', function() {
+	return function(number){
+		 //alert(number.charCodeAt(0));
+		if(number<=-1)
+			{
+				return ;
+			}
+			else if ( number < -1)
+			 {
+        return number+'th';
+    	} 
+		
+    	else if (number % 100 == 11 || number % 100 == 12) {
+        return number+'th';
+    		} 
+    	else {
+        var lastDigit = number % 10;
+
+        if (lastDigit ===0) {
+            return number+'th';}
+       	else  if (lastDigit === 1) 
+       	{
+            return number+'st';
+        }
+         else if (lastDigit === 2) 
+         {
+            return number+'nd';
+        } else if (lastDigit === 3) 
+        {
+            return number+'rd';
+        } else if (lastDigit > 3) 
+        {
+            return number+'th';
+        }
+    }
+}
+});
+</script>
+<body ng-App="customFilterapp" ng-init="amount=''">
+<div>
+<input type="number"  ng-model="amount"/></div>
+<div>displayed:{{amount|ordinal}}</div>
+</body>
+</html>

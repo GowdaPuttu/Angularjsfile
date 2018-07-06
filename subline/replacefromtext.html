@@ -1,0 +1,25 @@
+<title>
+ Factorial of number</title>
+ <script src="angular.min.js"></script>
+ <script>
+  var app=angular.module('customFilterapp',[]);
+  app.controller('customfilter',function($scope)
+  {
+ $scope.inputValue="";
+});
+		app.filter('splitreplace',function(){
+		return function(item){
+
+		return item.split('-').join(' ');
+		//return item.replace("-"," ");//
+		};
+});
+</script>
+</head>
+<body ng-App="customFilterapp" ng-controller="customfilter">
+   <input type="text"  ng-model="inputValue" />
+<p>
+  split form :{{inputValue|splitreplace}}
+</p>
+</body>
+</html>

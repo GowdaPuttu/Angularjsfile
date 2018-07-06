@@ -1,0 +1,17 @@
+function(students)
+		{
+			sum=0;
+			for(var i=0;i<$scope.students[0].subjects.length;i++)
+			{
+				sum=sum+$scope.students[0].subjects[i].marks;
+
+			}
+			return sum;
+		},
+
+
+		Average:function(students)
+			{
+				average1=($scope.students.Total()/$scope.students.subjects.length);
+				return average1;
+			}
